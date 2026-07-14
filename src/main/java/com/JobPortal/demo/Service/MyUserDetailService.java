@@ -1,5 +1,7 @@
 package com.JobPortal.demo.Service;
 
+import com.JobPortal.demo.Model.User;
+import com.JobPortal.demo.Model.UserPrincipal;
 import com.JobPortal.demo.Repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,6 +17,13 @@ public class MyUserDetailService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        repo.findByUsername(username);
+       User user= repo.findByUsername(username);
+
+       if(user==null){
+           throw  new UsernameNotFoundException("404 Not project");
+       }
+       else {
+           return new UserPrincipal(user);
+       }
     }
 }
