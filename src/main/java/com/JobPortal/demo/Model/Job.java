@@ -5,7 +5,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.*;
-import org.springframework.stereotype.Component;
+
+import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 @Data
@@ -23,8 +25,12 @@ public class Job {
     private String company;
     private String description;
     private int salary;
+
+
+
     private String location;
     private int experience;
+    private LocalDate created_At;
 
     public int getId() {
         return id;
@@ -80,5 +86,12 @@ public class Job {
 
     public void setExperience(int experience) {
         this.experience = experience;
+    }
+    public Date getCreated_At() {
+        return created_At;
+    }
+
+    public void setCreated_At(LocalDate created_At) {
+        this.created_At = created_At;
     }
 }

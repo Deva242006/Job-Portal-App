@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.awt.image.Kernel;
+import java.time.LocalDate;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -19,6 +21,7 @@ public class JobService {
     }
 
     public void saveJob(Job j1){
+        j1.setCreated_At(LocalDate.now());
         repo.save(j1);
     }
 
